@@ -1,0 +1,30 @@
+{% extends "Base.html" %}
+
+{% block title %}
+    Users list
+{% endblock %}
+
+{% block body %}
+    <h1>Users list</h1>
+
+    {% if object_list %}
+        <hr>
+    {% endif %}
+
+    {% for user in object_list %}
+        <p>Username: {{ user.username }}</p>
+        <p>First name: {{ user.first_name }}</p>
+        <p>Last name: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+
+        {% if user == request.user %}
+            <p><a href="{% url 'myauth:about-me' %}">About me</a></p>
+        {% else %}
+            <p><a href="{% url 'myauth:user_detail' pk=user.pk %}">Details</a></p>
+        {% endif %}
+
+        <hr>
+    {% empty %}
+        <h2>No users yet</h2>
+    {% endfor %}
+{% endblock %}

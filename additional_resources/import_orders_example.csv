@@ -1,0 +1,4 @@
+delivery_address,promocode,user,products
+"Unnamed country, Unreal region, Unknown town, Some street, 11",UNEMBOSSED1,1,"1,2,3"
+"Sunny country, Orange state, Apple town, Cherry street, 24",,2,"5,10"
+"Some country, Some state, Hidden city, Noname street, 3",SALE,2,"1,5,15"

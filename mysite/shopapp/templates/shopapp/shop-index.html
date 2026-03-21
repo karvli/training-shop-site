@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load cache %}
+
+{% block title %}
+    Shop Index
+{% endblock %}
+
+{% block body %}
+    <h1>Shop Index</h1>
+    <p>Available pages:</p>
+
+    <ol>
+        {% for page in pages %}
+            <li>
+                <a href="{{ page.url }}">{{ page.title }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+
+    <div>
+        Time running: {{ time_running }}
+    </div>
+
+    {% cache 100 lorem %}
+        <div>
+            {% lorem 3 p random %}
+        </div>
+    {% endcache %}
+{% endblock %}

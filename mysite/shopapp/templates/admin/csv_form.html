@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+
+{% block content %}
+    <h1>CSV file import</h1>
+
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <!-- Класс для назначения стиля кнопки как в /admin -->
+            <div class="submit-row">
+                <input type="submit" value="Upload">
+            </div>
+        </form>
+    </div>
+{% endblock %}

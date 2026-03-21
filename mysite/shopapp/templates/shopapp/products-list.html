@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Products List
+{% endblock %}
+
+{% block body %}
+    <h1>Products List</h1>
+
+    {% if items %}
+            <hr>
+        {% for item in items %}
+            <div>
+                <p><a href="{% url 'shopapp:product_details' pk=item.pk %}"><b>Name:</b> {{ item.name }}</a></p>
+                <p><b>Description:</b> {% firstof item.description '<i>&lt;no description&gt;</i>' %}</p>
+                <p><b>Price:</b> {{ item.price }}. <b>Discount:</b> {% firstof item.discount '<i>&lt;no discount&gt;</i>' %}</p>
+                <p><b>Creation date:</b> {{ item.created_at }}. <b>Archived:</b> {{ item.archived }}</p>
+
+                {% if item.preview %}
+                    <img src="{{ item.preview.url }}" alt="{{ item.preview.name }}">
+                {% endif %}
+
+                <hr>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3>No products yet</h3>
+    {% endif %}
+
+    {% if perms.shopapp.add_product %}
+        <p>
+            <a href="{% url 'shopapp:product_create' %}">Create a new product</a>
+        </p>
+    {% endif %}
+{% endblock %}

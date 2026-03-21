@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+<!-- Подключение библиотеки кэширования -->
+{% load cache %}
+
+{% block title %}
+    Orders List
+{% endblock %}
+
+{% block body %}
+    <h1>Orders List</h1>
+
+    {% if object_list %}
+        {% if owner %}
+            <h3>User <i>{{ owner }}</i> completed the following orders:</h3>
+        {% endif %}
+
+        <hr>
+
+        <!-- Кэширование минимально необходимой части. Время (2 минуты) выбрано случайным образом. -->
+        <!-- Если owner не передан, то соберётся "общий" кэш по всем доступным текущему пользователю заказам. -->
+        {% cache 120 orders owner.pk %}
+            {% for item in object_list %}
+                <div>
+                    <p><a href="{% url 'shopapp:order_details' pk=item.pk %}">Details #{{ item.pk }}</a></p>
+                    <p><b>Creation date:</b> {{ item.created_at }}.</p>
+                    <p><b>User:</b> {% firstof item.user.first_name item.user %}.</p>
+                    <p><b>Address:</b>{% firstof item.address '<i>&lt;no address&gt;</i>' %}.</p>
+                    <p>
+                        <b>Promocode:</b>
+                        {% if item.promocode %}
+                            <code>{{ item.promocode }}</code>
+                        {% else %}
+                            <i>&lt;no promocode&gt;</i>
+                        {% endif %}
+                    </p>
+
+                    {% if item.products.exists %}
+                        <div><b>Products:</b></div>
+                        <ul>
+                            {% for product in item.products.all %}
+                                <li>
+                                    {{ product.name }} for {{ product.price }} ₽.
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <div><b><i>No products</i></b></div>
+                    {% endif %}
+                    <hr>
+                </div>
+            {% endfor %}
+        {% endcache %}
+    {% else %}
+        {% if owner %}
+            <h3>User <i>{{ owner }}</i> has no orders yet</h3>
+        {% else %}
+            <h3>No orders yet</h3>
+        {% endif %}
+    {% endif %}
+
+    <p>
+        <a href="{% url 'shopapp:order_create' %}">Create a new order</a>
+    </p>
+{% endblock %}

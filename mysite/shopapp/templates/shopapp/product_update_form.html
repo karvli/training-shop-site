@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Update Product #{{ object.pk }}
+{% endblock %}
+
+{% block body %}
+    <h1>Update Product #{{ object.pk }}</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Update</button>
+    </form>
+
+    <p>
+        <a href="{% url 'shopapp:product_details' pk=object.pk %}">Back to product #{{ object.pk }}</a>
+    </p>
+{% endblock %}

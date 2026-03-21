@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load cache %}
+
+{% block title %}
+  About me
+{% endblock %}
+
+{% block style %}
+    .container {
+        display: flex;
+    }
+
+    .avatar-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 100px;
+    }
+
+    .avatar-container img {
+        max-height: 300px;
+    }
+{% endblock %}
+
+{% block body %}
+    <h1>User info</h1>
+
+    {% if user.is_authenticated %}
+        <h2>Detail</h2>
+
+        <div class="container">
+            <div>
+                {% cache 300 userinfo user.username %}
+                    <p>Username: {{ user.username }}</p>
+                    <p>First name: {{ user.first_name }}</p>
+                    <p>Last name: {{ user.last_name }}</p>
+                    <p>Email: {{ user.email }}</p>
+                    <p>Bio: {{ user.profile.bio }}</p>
+                    <p>Agreement accepted: {{ user.profile.agreement_accepted }}</p>
+                {% endcache %}
+            </div>
+
+            <div class="avatar-container">
+                {% if user.profile.avatar %}
+                    <img src="{{ user.profile.avatar.url }}" alt="{{ user.profile.avatar.name }}">
+                {% else %}
+                        <p><b><i>No avatar</i></b></p>
+                        <p><i>Update profile for adding avatar</i></p>
+                {% endif %}
+            </div>
+        </div>
+
+        <p><a href="{% url 'myauth:logout' %}">Logout</a> </p>
+        <p><a href="{% url 'myauth:user_update' pk=user.profile.pk %}">Update profile</a> </p>
+    {% else %}
+        <h2>User is anonymous</h2>
+        <p><a href="{% url 'myauth:login' %}">Login</a></p>
+    {% endif %}
+
+    <p><a href="{% url 'myauth:user_list' %}">Go to users list</a> </p>
+{% endblock %}

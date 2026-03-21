@@ -1,0 +1,223 @@
+[
+  {
+    "model": "blogapp.author",
+    "pk": 1,
+    "fields": {
+      "name": "Ivan Groznyi",
+      "bio": "Tsar. Pseudonym."
+    }
+  },
+  {
+    "model": "blogapp.author",
+    "pk": 2,
+    "fields": {
+      "name": "Capybara",
+      "bio": "Hobby, trips"
+    }
+  },
+  {
+    "model": "blogapp.author",
+    "pk": 3,
+    "fields": {
+      "name": "Sam",
+      "bio": ""
+    }
+  },
+  {
+    "model": "blogapp.category",
+    "pk": 1,
+    "fields": {
+      "name": "Science"
+    }
+  },
+  {
+    "model": "blogapp.category",
+    "pk": 2,
+    "fields": {
+      "name": "Sport"
+    }
+  },
+  {
+    "model": "blogapp.category",
+    "pk": 3,
+    "fields": {
+      "name": "News"
+    }
+  },
+  {
+    "model": "blogapp.category",
+    "pk": 4,
+    "fields": {
+      "name": "Other"
+    }
+  },
+  {
+    "model": "blogapp.category",
+    "pk": 5,
+    "fields": {
+      "name": "Hobby"
+    }
+  },
+  {
+    "model": "blogapp.tag",
+    "pk": 1,
+    "fields": {
+      "name": "popular"
+    }
+  },
+  {
+    "model": "blogapp.tag",
+    "pk": 2,
+    "fields": {
+      "name": "football"
+    }
+  },
+  {
+    "model": "blogapp.tag",
+    "pk": 3,
+    "fields": {
+      "name": "policy"
+    }
+  },
+  {
+    "model": "blogapp.tag",
+    "pk": 4,
+    "fields": {
+      "name": "games"
+    }
+  },
+  {
+    "model": "blogapp.tag",
+    "pk": 5,
+    "fields": {
+      "name": "relax"
+    }
+  },
+  {
+    "model": "blogapp.tag",
+    "pk": 6,
+    "fields": {
+      "name": "music"
+    }
+  },
+  {
+    "model": "blogapp.tag",
+    "pk": 7,
+    "fields": {
+      "name": "trips"
+    }
+  },
+  {
+    "model": "blogapp.tag",
+    "pk": 8,
+    "fields": {
+      "name": "history"
+    }
+  },
+  {
+    "model": "blogapp.tag",
+    "pk": 9,
+    "fields": {
+      "name": "hockey"
+    }
+  },
+  {
+    "model": "blogapp.article",
+    "pk": 1,
+    "fields": {
+      "title": "Politics in football",
+      "content": "Politics go to football",
+      "pub_date": "2026-03-07T19:46:08.816Z",
+      "author": 3,
+      "category": 3,
+      "tags": [
+        2,
+        3
+      ]
+    }
+  },
+  {
+    "model": "blogapp.article",
+    "pk": 2,
+    "fields": {
+      "title": "Trips all world",
+      "content": "",
+      "pub_date": "2026-03-07T19:49:01.272Z",
+      "author": 2,
+      "category": 5,
+      "tags": [
+        1,
+        5,
+        7
+      ]
+    }
+  },
+  {
+    "model": "blogapp.article",
+    "pk": 3,
+    "fields": {
+      "title": "Sensation in Russian history",
+      "content": "We got a sensation in Russian history research.",
+      "pub_date": "2026-03-07T20:01:23.082Z",
+      "author": 1,
+      "category": 1,
+      "tags": [
+        1,
+        8
+      ]
+    }
+  },
+  {
+    "model": "blogapp.article",
+    "pk": 4,
+    "fields": {
+      "title": "Music from different countries",
+      "content": "Listen a music from different countries. Best chart.",
+      "pub_date": "2026-03-07T20:02:41.539Z",
+      "author": 2,
+      "category": 5,
+      "tags": [
+        6,
+        7
+      ]
+    }
+  },
+  {
+    "model": "blogapp.article",
+    "pk": 5,
+    "fields": {
+      "title": "Nothing article -_-",
+      "content": "I don't know what to write. That's why i decided to write this :-)",
+      "pub_date": "2026-03-07T20:05:56.809Z",
+      "author": 3,
+      "category": 4,
+      "tags": []
+    }
+  },
+  {
+    "model": "blogapp.article",
+    "pk": 6,
+    "fields": {
+      "title": "Championship schedule",
+      "content": "My chart of best championship schedule",
+      "pub_date": "2026-03-07T20:07:21.331Z",
+      "author": 3,
+      "category": 2,
+      "tags": [
+        9
+      ]
+    }
+  },
+  {
+    "model": "blogapp.article",
+    "pk": 7,
+    "fields": {
+      "title": "Article Template",
+      "content": "Article Template 1. Not published article. Not displayed in articles list.",
+      "pub_date": null,
+      "author": 1,
+      "category": 4,
+      "tags": []
+    }
+  }
+]

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  User info
+{% endblock %}
+
+{% block style %}
+    .container {
+        display: flex;
+    }
+
+    .avatar-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-left: 100px;
+    }
+
+    .avatar-container img {
+        max-height: 300px;
+    }
+{% endblock %}
+
+{% block body %}
+    <h1>User "{{ object }}" info</h1>
+
+    <h2>Detail</h2>
+
+    <div class="container">
+        <div>
+            <p>Username: {{ object.username }}</p>
+            <p>First name: {{ object.first_name }}</p>
+            <p>Last name: {{ object.last_name }}</p>
+            <p>Email: {{ object.email }}</p>
+            <p>Bio: {{ object.profile.bio }}</p>
+            <p>Agreement accepted: {{ object.profile.agreement_accepted }}</p>
+        </div>
+
+        <div class="avatar-container">
+            {% if object.profile.avatar %}
+                <img src="{{ object.profile.avatar.url }}" alt="{{ object.profile.avatar.name }}">
+            {% else %}
+                <p><b><i>No avatar</i></b></p>
+                <p><i>Update profile for adding avatar</i></p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if request.user.is_staff or object == request.user %}
+        <p><a href="{% url 'myauth:user_update' pk=object.profile.pk %}">Update profile</a></p>
+    {% endif %}
+
+    <p><a href="{% url 'myauth:user_list' %}">Back to users list</a> </p>
+{% endblock %}

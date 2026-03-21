@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Order #{{ object.pk }} details
+{% endblock %}
+
+{% block body %}
+    <h1>Order #{{ object.pk }}</h1>
+    <div>
+        <p><b>Creation date:</b> {{ object.created_at }}.</p>
+        <p><b>User:</b> {% firstof object.user.first_name object.user %}.</p>
+        <p><b>Address:</b>{% firstof object.delivery_address '<i>&lt;no address&gt;</i>' %}.</p>
+        <p>
+            <b>Promocode:</b>
+            {% if object.promocode %}
+            <code>{{ object.promocode }}</code>
+            {% else %}
+                <i>&lt;no promocode&gt;</i>
+            {% endif %}
+        </p>
+        {% if object.products.exists %}
+            <div><b>Products:</b></div>
+            <ul>
+                {% for product in object.products.all %}
+                    <li>
+                        {{ product.name }} for {{ product.price }} ₽.
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <div><b><i>No products</b></i></div>
+        {% endif %}
+        <hr>
+    </div>
+
+    <div>
+        <a href="{% url 'shopapp:order_update' pk=object.pk %}">Update order</a>
+    </div>
+    <div>
+        <a href="{% url 'shopapp:order_delete' pk=object.pk %}">Delete order</a>
+    </div>
+    <div>
+        <a href="{% url 'shopapp:orders_list' %}">Back to orders</a>
+    </div>
+{% endblock %}

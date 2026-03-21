@@ -1,0 +1,29 @@
+# Сделано на основне заготовки
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+env
+pip-log.txt
+pip-delete-this-directory.txt
+.tox
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.git
+.mypy_cache
+.pytest_cache
+.hypothesis
+
+# Добавелны возможные имена каталогов виртуальных окружений python в pycharm.
+# Их нет смысла копировать, так как в docker образе они не будут использоваться. Образу - уже "виртуальное окружение".
+.venv
+venv
+
+# Необязательно. Неиспользуемые файлы.
+.gitignore

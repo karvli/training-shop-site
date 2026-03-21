@@ -1,0 +1,22 @@
+{% extends "Base.html" %}
+
+{% block title %}
+    File Upload
+{% endblock %}
+
+{% block body %}
+    <h1>Select file to upload</h1>
+
+    {% if is_big_file_error %}
+        <p style="color: red;">File size is too big. Select file smaller than 1 MB.</p>
+    {% endif %}
+
+    <!-- "multipart/form-data" для отправки в виде файла -->
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            <input type="file" name="selected_file">
+        </p>
+        <button type="submit">Upload</button>
+    </form>
+{% endblock %}

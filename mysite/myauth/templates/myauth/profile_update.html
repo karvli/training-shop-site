@@ -1,0 +1,32 @@
+{% extends "Base.html" %}
+
+{% block title %}
+    Profile info
+{% endblock %}
+
+{% block body %}
+    <h1>Profile of user "{{ object.user }}"</h1>
+
+    {% if object.avatar %}
+        <h2>Current avatar:</h2>
+        <div>
+            <img src="{{ object.avatar.url }}" alt="{{ object.avatar.name }}">
+        </div>
+    {% endif %}
+
+    <h2>Data:</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
+
+    {% if object.user == request.user %}
+        <p><a href="{% url 'myauth:about-me' %}">Back to "About me"</a></p>
+        <p><a href="{% url 'myauth:user_list' %}">Go to users list</a> </p>
+    {% else %}
+        <p><a href="{% url 'myauth:user_detail' pk=object.user.pk %}">Back to details</a></p>
+        <p><a href="{% url 'myauth:user_list' %}">Back to users list</a> </p>
+    {% endif %}
+
+{% endblock %}

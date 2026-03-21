@@ -1,0 +1,106 @@
+[
+  {
+    "model": "shopapp.product",
+    "pk": 4,
+    "fields": {
+      "name": "HDD",
+      "description": "Best HDD!",
+      "created_at": "2026-01-18T14:15:48.358Z",
+      "archived": false,
+      "price": "5000.00",
+      "discount": 0,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 5,
+    "fields": {
+      "name": "SSD",
+      "description": "Old good solid state drive",
+      "created_at": "2026-01-18T14:15:48.362Z",
+      "archived": false,
+      "price": "7000.00",
+      "discount": 0,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 9,
+    "fields": {
+      "name": "Flash drive",
+      "description": "Flash the flashest drive! Flash the flashest drive! Flash the flashest drive! Flash the flashest drive! Flash the flashest drive! Flash the flashest drive! Flash the flashest drive! Flash the flashest drive! Flash the flashest drive!",
+      "created_at": "2026-01-18T14:24:46.465Z",
+      "archived": false,
+      "price": "1000.00",
+      "discount": 0,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 10,
+    "fields": {
+      "name": "SSD 2",
+      "description": "",
+      "created_at": "2026-01-21T19:05:55.106Z",
+      "archived": true,
+      "price": "5600.00",
+      "discount": 10,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 12,
+    "fields": {
+      "name": "Kingston Flash Drive",
+      "description": "256 Gb Flash drive",
+      "created_at": "2026-02-08T15:24:35.030Z",
+      "archived": true,
+      "price": "1500.00",
+      "discount": 5,
+      "created_by": null
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 13,
+    "fields": {
+      "name": "PSU Cooler Master 500W",
+      "description": "Power supply unit, 500 W.",
+      "created_at": "2026-02-15T18:55:30.934Z",
+      "archived": false,
+      "price": "5000.00",
+      "discount": 10,
+      "created_by": 3
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 14,
+    "fields": {
+      "name": "PSU Cooler Master 700W",
+      "description": "Power supply unit, 700 W.",
+      "created_at": "2026-02-15T18:56:00.982Z",
+      "archived": false,
+      "price": "7000.00",
+      "discount": 9,
+      "created_by": 3
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 15,
+    "fields": {
+      "name": "PSU Gold",
+      "description": "1000 W",
+      "created_at": "2026-02-15T18:56:38.762Z",
+      "archived": false,
+      "price": "1000.00",
+      "discount": 0,
+      "created_by": 3
+    }
+  }
+]
