@@ -217,8 +217,15 @@ STATIC_URL = "static/"
 
 # ДОБАВЛЕНО (всё, что ниже)
 
+# Не требуется локально при DEBUG=True.
+# Дла выдачи статики в контейнере Docker или веб-сервером (ngnix).
+# Предварительно надо вызвать команду подготовки статических файлов (можно указать в RUN Dockerfile).
+# --noinput (или --no-input) - для автоматического подтверждения всех запросов без взаимодействия с пользователем.
+# python manage.py collectstatic --noinput
+STATIC_ROOT = BASE_DIR / "static"
+
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media_uploads'
+MEDIA_ROOT = DATABASE_DIR / 'media_uploads' # В каталог базы данных, чтобы вынести файлы вне контейнера Docker
 # DEFAULT_FILE_STORAGE = # Что является хранилищем (class-обработчик). В этой настройке можно указать облачное хранилище.
 
 LOGIN_REDIRECT_URL = reverse_lazy('myauth:about-me') # Адрес перенаправления после успешной аутентификации
