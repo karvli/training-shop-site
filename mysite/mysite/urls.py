@@ -20,12 +20,16 @@ from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
-from django.urls import path, include
+from django.urls import path, include, reverse_lazy
+from django.views.generic import RedirectView
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 from mysite.sitemaps import sitemaps
 
 urlpatterns = [
+    # Не из задания. Настройка начальной страницы на shop.
+    path('', RedirectView.as_view(url=reverse_lazy('shopapp:index'))),
+
     # Добавлено
     path("requests/", include('requestdataapp.urls')),
     path("auth/", include('myauth.urls')),

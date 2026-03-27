@@ -219,5 +219,6 @@ __marimo__/
 # МОЁ
 
 # Загруженные файлы в GIT не нужны. К ним, например, относятся картинки товаров (Products).
+uploaded_files/
 media_uploads/
 static/

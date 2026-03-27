@@ -16,11 +16,16 @@ from django.conf.global_settings import LOGGING
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from drf_spectacular.settings import SPECTACULAR_DEFAULTS
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ДОБАВЛЕНО
+
+# Не по заданию. Для возможности использовать настройки .env файла вне контейнера Docker.
+# override=False, чтобы не перезаписывать настройки контейнера Docker
+load_dotenv(override=False)
 
 # Параметры окружения для настройки из Docker.
 # Префикс настроек 'DJANGO_' нужен для гарантии уникальности имён. Префикс выбран произвольным образом.

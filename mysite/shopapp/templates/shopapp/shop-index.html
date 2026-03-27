@@ -8,7 +8,7 @@
 
 {% block body %}
     <h1>Shop Index</h1>
-    <p>Available pages:</p>
+    <h2>Available pages</h2>
 
     <ol>
         {% for page in pages %}
@@ -17,6 +17,28 @@
             </li>
         {% endfor %}
     </ol>
+
+    <h2>Pages of other site sections</h2>
+
+    <ol>
+        {% for page in other_pages %}
+            <li>
+                <a href="{% url page.url %}">{{ page.title }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+
+    <h2>Test pages</h2>
+
+    <ol>
+        {% for page in test_pages %}
+            <li>
+                <a href="{% url page.url %}">{{ page.title }}</a>
+            </li>
+        {% endfor %}
+    </ol>
+
+    <h2>Various information</h2>
 
     <div>
         Time running: {{ time_running }}

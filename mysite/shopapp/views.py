@@ -33,14 +33,27 @@ log = logging.getLogger(__name__) # Не из задания
 @cache_page(60 * 2, key_prefix="shop-index-key-prefix") # Не по заданию
 def shop_index(request: HttpRequest) -> HttpResponse:
     context = {
+        # Демонстрация перехода по прямым ссылкам.
         'pages': [
             {
                 'url': 'products/', # Альтернатива: './products/'
                 'title': 'Список товаров (продуктов)',
             },
             {
+                'url': 'products/export/',
+                'title': 'Экспорт товаров (продуктов) в JSON',
+            },
+            {
+                'url': 'products/latest/feed/',
+                'title': 'RSS-лента последних товаров (продуктов)',
+            },
+            {
                 'url': 'orders/',
                 'title': 'Список заказов',
+            },
+            {
+                'url': 'orders/export/',
+                'title': 'Экспорт заказов в JSON',
             },
             {
                 'url': 'groups/',
@@ -48,7 +61,71 @@ def shop_index(request: HttpRequest) -> HttpResponse:
             },
             {
                 'url': 'api/',
-                'title': 'Документация API',
+                'title': 'Документация API (Django)',
+            },
+        ],
+
+        # Не из задания. "Заглушка" вместо реализации отдельной "главной страницы".
+        # Демонстрация перехода по именам ссылок. Более предпочтительный вариант.
+        'other_pages': [
+            {
+                'url': 'admin:index',
+                'title': 'Административная панель Django',
+            },{
+                'url': 'myauth:about-me',
+                'title': 'Информация о текущем пользователе',
+            },
+            {
+                'url': 'myauth:register',
+                'title': 'Регистрация нового пользователя',
+            },
+            {
+                'url': 'myauth:user_list',
+                'title': 'Список пользователей с возможностью перехода к заказам пользователя (обратно в ShopApp)',
+            },
+            {
+                'url': 'blogapp:articles',
+                'title': 'Список статей блога',
+            },
+            {
+                'url': 'blogapp:articles-feed',
+                'title': 'RSS-лента последних статей блога',
+            },
+            {
+                'url': 'swagger',  # Имена для переадресации. Имеет зависимость от приложений.
+                'title': 'Swagger API - общая документация, включающая тестовые API',
+            },
+            {
+                'url': 'django.contrib.sitemaps.views.sitemap',
+                'title': 'Карта сайта, содержащая ShopApp и BlogApp',
+            },
+        ],
+
+        # Не из задания. "Заглушка" вместо реализации отдельной "главной страницы".
+        'test_pages': [
+            {
+                'url': 'requestdataapp:file-upload',
+                'title': 'Загрузка файла в каталог "uploaded_files", расположенный в корне проекта',
+            },
+            {
+                'url': 'myauth:cookie-get',
+                'title': 'Получение cookie',
+            },
+            {
+                'url': 'myauth:cookie-set',
+                'title': 'Установка cookie',
+            },
+            {
+                'url': 'myauth:session-get',
+                'title': 'Получение сессии',
+            },
+            {
+                'url': 'myauth:session-set',
+                'title': 'Установка сессии',
+            },
+            {
+                'url': 'myauth:foo-bar',
+                'title': 'Страница, используемая для демонстрации тестов приложения MyAuth',
             },
         ]
     }

@@ -23,6 +23,10 @@
             <p><a href="{% url 'myauth:user_detail' pk=user.pk %}">Details</a></p>
         {% endif %}
 
+        <!-- Не по заданию. Переход к странице заказов пользователя в приложении ShopApp. -->
+        <p><a href="{% url 'shopapp:user_orders_list' user_id=user.pk %}">Go to user's order list</a></p>
+        <p><a href="{% url 'shopapp:user_orders_export' user_id=user.pk %}">Export user's orders to JSON</a></p>
+
         <hr>
     {% empty %}
         <h2>No users yet</h2>
